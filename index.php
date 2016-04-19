@@ -1,5 +1,9 @@
 <?php 
 $pageTitle = "Personal Media Library";
+
+//even though we are not using underlining in our navigation for the index page
+//we still need to add the variable there as well to prevent errors
+$section = null;
 include('inc/header.php'); 
 ?>
 
