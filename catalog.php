@@ -1,4 +1,9 @@
-<?php include('inc/header.php'); ?>
+<?php 
+$pageTitle = "Full Catalog";
+
+include('inc/header.php'); 
+
+?>
 
 <div class="section page">
     <h1>Full catalog</h1>
