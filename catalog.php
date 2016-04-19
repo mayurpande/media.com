@@ -4,12 +4,15 @@
 //which will display the full catalog, all the books,films, music. in the library
 $pageTitle = "Full Catalog";
 
-if($_GET["cat"] == "books"){
-    $pageTitle = "Books";
-}else if($_GET["cat"] == "movies"){
-    $pageTitle = "Movies";
-}else if($_GET["cat"] == "music"){
-    $pageTitle = "Music";
+//first check if get variable exists
+if(isset($_GET["cat"])){
+    if($_GET["cat"] == "books"){
+        $pageTitle = "Books";
+    }else if($_GET["cat"] == "movies"){
+        $pageTitle = "Movies";
+    }else if($_GET["cat"] == "music"){
+        $pageTitle = "Music";
+    }
 }
 
 
