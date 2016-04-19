@@ -14,6 +14,6 @@
 
 		</div>
 
-	</div> <!-- end content  --!>
+
 
 <?php include('inc/footer.php'); ?>
