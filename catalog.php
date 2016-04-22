@@ -38,10 +38,13 @@ include('inc/header.php');
         <h1><?php echo $pageTitle ?></h1>
 
         <ul class="items">
-            <?php 
-            //we use id key here to pass into get_item_html fn
-            foreach($catalog as $id => $item){
-                   echo get_item_html($id,$item);
+            <?php
+            //call our array_category function from functions inc file,
+            //pass in $catalog argument as well as our category arugment which is $section
+            $categories = array_category($catalog,$section);
+
+            foreach($categories as $id){
+                   echo get_item_html($id,$catalog[$id]);
             }
             ?>
         </ul>
