@@ -12,7 +12,13 @@ function get_item_html($id,$item){
 
 //fn to return array keys for catalog
 //we pass in arguements catalog array and the category we wish to return
-function array_category($catalog,$catagory){
+function array_category($catalog,$category){
+    //as the default section equal null, we run a condition to test to see if this
+    //is true if it is display all categories
+    if($category == null){
+        //it returns an array of just the keys
+        return array_keys($catalog);
+    }
     //we want to return an array so we start by creating an empty array named output
     $output = array();
 
