@@ -16,14 +16,20 @@ include('inc/header.php');
 
 				<h2>May we suggest something?</h2>
 
-								<ul class="items">
-					<?php 
-            //we use id key here to pass into get_item_html fn
-            foreach($catalog as $id => $item){
-                   echo get_item_html($id,$item);
-            }
-            ?>
-            </ul>
+				<ul class="items">
+                <?php
+                //generate an random array that gets 4 items from the catalog
+                $random = array_rand($catalog,4);
+                //instead of looping through the catalog we loop through the random var
+ 
+                foreach($random as $id){
+                //we still pass in id to our fn, but instead of passing in item
+                    //we pass in $catalog[$id] to call the specific catalog item accordig
+                    //to that id
+                       echo get_item_html($id,$catalog[$id]);
+                }
+                ?>
+                </ul>
 
 			</div>
 
