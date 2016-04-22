@@ -15,10 +15,7 @@ function get_item_html($id,$item){
 function array_category($catalog,$category){
     //as the default section equal null, we run a condition to test to see if this
     //is true if it is display all categories
-    if($category == null){
-        //it returns an array of just the keys
-        return array_keys($catalog);
-    }
+   
     //we want to return an array so we start by creating an empty array named output
     $output = array();
 
@@ -26,13 +23,30 @@ function array_category($catalog,$category){
 
     foreach($catalog as $id => $item) {
         //foreach item we need to if the category is the one that matches our category
-        //parameter 
-        if(strtolower($category) == strtolower($item["category"])){
+        //parameter
+        if($category == null || strtolower($category) == strtolower($item["category"])){
+            //after we check if this item matches our category, we want to create
+            //a variable to use for sorting we can use any element to sort with 
+            //but title would seem the most useful
+            $sort = $item["title"];
+            //we use ltrim to get rid of any preceding words in title i.e. the,a
+            $sort = ltrim($sort,"The ");
+            $sort = ltrim($sort,"A ");
+            $sort = ltrim($sort,"An ");
+            /* now instead of just adding the key to the array we also want to assign the
+             * value to sort
+             */
             //if the category we passed in as our arugement matches the category of the 
             //current item we are looping through, we need to add the id to the o/p array
-            $output[] = $id;
-        }
+            $output[$id] = $sort;
+                   }
     }
-    return $output;
+    //before we return our o/p array we need to do two things;
+    //1) sort the array using in-built fn called asort
+    //2) Since we changed our array to include more than just the keys, we want to return
+    //only the keys, like we did on null. So again we use array keys
+
+    asort($output);
+    return array_keys($output);
     
 }
