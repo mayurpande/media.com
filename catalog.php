@@ -1,5 +1,6 @@
 <?php
 include("inc/data.php");
+include("inc/functions.php");
 
 //default value if none of condition are met
 //if there is no value set for the variable in the query string we will display this
@@ -38,12 +39,9 @@ include('inc/header.php');
 
         <ul class="items">
             <?php 
-            foreach($catalog as $item){
-                echo '<li><a href="#"><img src="'
-                    . $item["img"] . '" alt="' 
-                    . $item["alt"] . '"/> ' 
-                    . '<p>View Details</p>' 
-                    . '</a></li>';
+            //we use id key here to pass into get_item_html fn
+            foreach($catalog as $id => $item){
+                   echo get_item_html($id,$item);
             }
             ?>
         </ul>
