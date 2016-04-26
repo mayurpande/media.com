@@ -50,6 +50,81 @@ include('inc/header.php');
 
 		</div>
 
+		<div class="media-details">
+			
+			<h1><?php echo $item["title"]; ?></h1>
+
+			<table>
+
+				<tr>
+					<th>Category</th>
+					<td><?php echo $item["category"]; ?></td>
+				</tr>
+				
+				<tr>
+					<th>Genre</th>
+					<td><?php echo $item["genre"]; ?></td>
+				</tr>
+				<tr>
+					<th>Format</th>
+					<td><?php echo $item["format"]; ?></td>
+				</tr>			
+				<tr>
+					<th>Year</th>
+					<td><?php echo $item["year"]; ?></td>
+				</tr>
+
+				<?php 
+				/* our different categories will have different item details in them, we can use a conditional to check through for these additional item details using strtolower fn and then display them using the same format as above */
+				if(strtolower($item["category"]) == "books"){
+				?>
+				<tr>
+					<th>Authors</th>
+					<!-- implode built in php fn that allows us to seperate array elenents with a comma --!>
+					<td><?php echo implode(", ",$item["authors"]); ?></td>
+				</tr>
+
+				<tr>
+					<th>Publisher</th>
+					<td><?php echo $item["publisher"]; ?></td>
+				</tr>
+
+				<tr>
+					<th>ISBN</th>
+					<td><?php echo $item["isbn"]; ?></td>
+				</tr>
+
+				<?php } else if(strtolower($item["category"]) == "movies"){ ?>
+				
+				<tr>
+					<th>Director</th>
+					<td><?php echo $item["director"]; ?></td>
+				</tr>
+
+				<tr>
+					<th>Writers</th>
+					<!-- implode built in php fn that allows us to seperate array elenents with a comma --!>
+					<td><?php echo implode(", ",$item["writers"]); ?></td>
+				</tr>
+				<tr>
+					<th>Stars</th>
+					<!-- implode built in php fn that allows us to seperate array elenents with a comma --!>
+					<td><?php echo implode(", ",$item["stars"]); ?></td>
+				</tr>
+				
+				<?php } else if(strtolower($item["category"]) == "music"){ ?>
+				<tr>
+					<th>Artist</th>
+					<td><?php echo $item["artist"]; ?></td>
+				</tr>			
+				
+
+				<?php } ?>
+
+			</table>
+		</div>
+
+
 	</div>
 
 </div>
