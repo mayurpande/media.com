@@ -1,4 +1,7 @@
 <?php 
+include("inc/data.php");
+include("inc/functions.php");
+
 $pageTitle = "Personal Media Library";
 
 //even though we are not using underlining in our navigation for the index page
@@ -13,9 +16,20 @@ include('inc/header.php');
 
 				<h2>May we suggest something?</h2>
 
-								<ul class="items">
-					<li><a href="details.php?id=201"><img src="img/media/forest_gump.jpg" alt="Forrest Gump"><p>View Details</p></a></li><li><a href="details.php?id=204"><img src="img/media/princess_bride.jpg" alt="The Princess Bride"><p>View Details</p></a></li><li><a href="details.php?id=302"><img src="img/media/elvis_presley.jpg" alt="Elvis Forever"><p>View Details</p></a></li><li><a href="details.php?id=303"><img src="img/media/garth_brooks.jpg" alt="No Fences"><p>View Details</p></a></li>								
-				</ul>
+				<ul class="items">
+                <?php
+                //generate an random array that gets 4 items from the catalog
+                $random = array_rand($catalog,4);
+                //instead of looping through the catalog we loop through the random var
+ 
+                foreach($random as $id){
+                //we still pass in id to our fn, but instead of passing in item
+                    //we pass in $catalog[$id] to call the specific catalog item accordig
+                    //to that id
+                       echo get_item_html($id,$catalog[$id]);
+                }
+                ?>
+                </ul>
 
 			</div>
 
